@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heart Password</title>
+
+<style>
+body {
+  background-color: black;
+  color: white;
+  font-family: monospace;
+  text-align: center;
+}
+
+input, button {
+  font-size: 18px;
+  padding: 5px;
+  margin: 5px;
+}
+
+#screen {
+  margin-top: 30px;
+  white-space: pre;
+  font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Input my heart password ⇒</h2>
+<input type="number" id="password">
+<button onclick="checkPassword()">Enter</button>
+
+<pre id="screen"></pre>
+
+<script>
+let attempt = 1;
+const correctPassword = 12345;
+const screen = document.getElementById("screen");
+
+function checkPassword() {
+  let pw = Number(document.getElementById("password").value);
+
+  if (pw === correctPassword) {
+    showLove();
+  } else {
+    wrong();
+  }
+}
+
+function wrong() {
+  screen.style.color = "red";
+
+  if (attempt === 1) {
+    screen.textContent = "Try again.";
+  } else if (attempt === 2) {
+    screen.textContent = "PLEASEEEEEEEEEEE";
+  } else if (attempt === 3) {
+    screen.textContent = "FUCK YOU AND TRY AGAIN!!!!";
+  } else {
+    kuy();
+    return;
+  }
+  attempt++;
+}
+
+function kuy() {
+  setInterval(() => {
+    screen.textContent = "Kuy".repeat(50);
+    screen.style.color = "red";
+  }, 100);
+}
+
+function showLove() {
+  const colors = ["red","blue","green","cyan","yellow"];
+  let i = 0;
+
+  setInterval(() => {
+    screen.style.color = colors[i % colors.length];
+    screen.textContent =
+`III    L      OOOOO  V     V  EEEEE      Y     Y  OOOOO   U     U
+ I     L     O     O  V   V   E           Y   Y  O     O  U     U
+ I     L     O     O   V V    EEEE         Y Y   O     O  U     U
+ I     L     O     O    V     E             Y    O     O  U     U
+III    LLLLL  OOOOO     V     EEEEE         Y     OOOOO    UUUUU `;
+    i++;
+  }, 500);
+}
+</script>
+
+</body>
+</html>
